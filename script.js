@@ -65,4 +65,5 @@ document.querySelector('a[href="#grupos"]').addEventListener('click', e => {
   document.querySelector('.groups-grid').scrollIntoView({ behavior: 'smooth' });
 });
 
+
 loadLinks();
