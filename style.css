@@ -363,6 +363,83 @@ body {
   line-height: 1.72;
 }
 
+/* ===== TESTIMONIALS ===== */
+.testi-section {
+  background: var(--black);
+  padding: 100px 40px;
+  text-align: center;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  text-align: left;
+}
+
+.testi-card {
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.testi-card--accent {
+  border-color: rgba(245,196,0,0.22);
+  background: #17160A;
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 3px;
+}
+
+.testi-quote {
+  font-size: 14px;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.78;
+  flex: 1;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.testi-av {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--gold-muted);
+  border: 1px solid rgba(245,196,0,0.22);
+  color: var(--gold);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testi-info strong {
+  display: block;
+  font-size: 13px;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.testi-info span {
+  font-size: 12px;
+  color: rgba(255,255,255,0.30);
+}
+
 /* ===== HOW IT WORKS ===== */
 .how-section {
   background: var(--white);
@@ -440,6 +517,19 @@ body {
   align-items: center;
 }
 
+.cta-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #25D366;
+  border: 1px solid rgba(37,211,102,0.25);
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
 .cta-section h2 {
   font-family: 'Syne', sans-serif;
   font-size: clamp(30px, 5vw, 50px);
@@ -501,6 +591,7 @@ body {
 
   .pain-grid,
   .features-grid,
+  .testi-grid,
   .steps-grid { grid-template-columns: 1fr; }
 
   .pain-card {
