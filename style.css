@@ -365,7 +365,7 @@ body {
 
 /* ===== HOW IT WORKS ===== */
 .how-section {
-  background: var(--cream);
+  background: var(--white);
   padding: 100px 40px;
   text-align: center;
 }
@@ -375,46 +375,51 @@ body {
   font-size: clamp(26px, 4vw, 38px);
   font-weight: 700;
   letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.how-sub {
+  font-size: 15px;
+  color: var(--muted);
   margin-bottom: 52px;
 }
 
-.steps {
-  max-width: 540px;
-  margin: 0 auto;
-  text-align: left;
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.step {
-  display: flex;
-  gap: 22px;
-  align-items: flex-start;
-  padding: 26px 0;
-  border-bottom: 1px solid var(--border);
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
 }
-.step:last-child { border-bottom: none; }
 
 .step-num {
-  flex-shrink: 0;
-  width: 36px; height: 36px;
+  width: 48px; height: 48px;
   border-radius: 50%;
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Syne', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
+  background: var(--gold);
+  color: var(--black);
+  font-family: 'Bangers', cursive;
+  font-size: 26px;
+  letter-spacing: 1px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
+  margin: 0 auto 20px;
 }
 
-.step-body h3 {
+.step-card h3 {
   font-family: 'Syne', sans-serif;
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
-.step-body p {
+
+.step-card p {
   font-size: 14px;
   color: var(--muted);
   line-height: 1.68;
@@ -495,7 +500,8 @@ body {
   .footer { padding-left: 24px; padding-right: 24px; }
 
   .pain-grid,
-  .features-grid { grid-template-columns: 1fr; }
+  .features-grid,
+  .steps-grid { grid-template-columns: 1fr; }
 
   .pain-card {
     border-right: none;
