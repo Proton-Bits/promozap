@@ -24,6 +24,18 @@ body {
 .hero {
   background: var(--black);
   padding: 72px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 80% 50%, rgba(245,196,0,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 35% at 5% 90%,  rgba(245,196,0,0.08) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .hero-inner {
@@ -404,6 +416,9 @@ body {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 860px) {
   .hero        { padding: 60px 24px 72px; }
+  .hero::before {
+    background: radial-gradient(ellipse 90% 45% at 50% 18%, rgba(245,196,0,0.20) 0%, transparent 60%);
+  }
   .hero-inner  { flex-direction: column-reverse; text-align: center; gap: 40px; }
   .hero-text   { max-width: 100%; }
   .hero-visual { flex: none; }
