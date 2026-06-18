@@ -57,7 +57,7 @@ body {
 /* ===== HERO ===== */
 .hero {
   background: var(--black);
-  padding: 72px 40px 80px;
+  padding: 40px 40px 80px;
   position: relative;
   overflow: hidden;
 }
@@ -91,7 +91,7 @@ body {
   font-size: 32px;
   letter-spacing: 2px;
   color: var(--white);
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 .brand span { color: var(--gold); }
 
@@ -105,24 +105,24 @@ body {
   border: 1px solid rgba(245,196,0,0.20);
   padding: 5px 14px;
   border-radius: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .hero-text h1 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 3.2vw, 40px);
+  font-size: clamp(26px, 3vw, 34px);
   font-weight: 800;
   color: var(--white);
   line-height: 1.1;
   letter-spacing: -1px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .hero-sub {
   font-size: 16px;
   color: rgba(255,255,255,0.48);
-  line-height: 1.75;
-  margin-bottom: 36px;
+  line-height: 1.5;
+  margin-bottom: 20px;
   font-weight: 300;
 }
 .hero-sub strong {

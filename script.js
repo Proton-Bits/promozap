@@ -1,3 +1,31 @@
+// Rastreamento de clique no botão do WhatsApp (Meta Pixel)
+//
+// Por que isso existe: o clique nesses botões leva o usuário para fora do
+// site (chat.whatsapp.com). Disparar o evento via "onclick" direto no HTML
+// (como era antes) roda no mesmo instante em que o navegador já está indo
+// embora da página — em conexões lentas ou no navegador in-app do
+// Instagram/Facebook (que é o que abre ao clicar no anúncio), o pedido de
+// rede do Pixel pode não terminar de ser enviado, e o evento se perde.
+//
+// A função abaixo:
+// 1. Bloqueia a navegação automática do <a href="...">.
+// 2. Abre a aba do WhatsApp IMEDIATAMENTE (window.open precisa rodar
+//    dentro do clique do usuário, senão o navegador bloqueia como pop-up —
+//    por isso isso NÃO pode esperar o Pixel responder antes de abrir).
+// 3. Dispara o evento 'Contact' do Pixel (mais adequado que 'Lead' para
+//    "iniciar uma conversa"). Como a aba aberta é nova, a aba original
+//    (onde o script está rodando) continua viva tempo suficiente para a
+//    requisição do Pixel ser enviada — diferente de uma navegação que
+//    troca de página na mesma aba.
+function trackWhatsappClick(event, url) {
+  event.preventDefault();
+  window.open(url, '_blank');
+
+  if (typeof fbq === 'function') {
+    fbq('track', 'Contact');
+  }
+}
+
 // Lógica de admin panel removida — descomentar quando houver painel de gerenciamento de links
 //
 // const KEYS = ['perfume', 'esportes', 'ferramentas', 'tech'];
