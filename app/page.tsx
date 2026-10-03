@@ -8,19 +8,23 @@ import MetaPixel from "@/components/MetaPixel";
 import PixelTracker from "@/components/PixelTracker";
 import WhatsappButton from "@/components/WhatsappButton";
 
-// Página raiz: um card pra cada grupo. Cada botão se comporta igual ao da
-// landing page correspondente — mesmo link de convite (resolvido ao vivo no
-// promozap-admin), mesmo trackingGroup no Pixel e clique registrado no slug
-// dela. Ou seja, os cliques daqui entram nas métricas de achadinhos-1 e
-// perfumes-1.
+// Página raiz: um card pra cada grupo. Cada card tem sua própria landing page
+// no promozap-admin (home-achadinhos / home-perfumes), apontando pro mesmo
+// funil da página original — mesmos grupos, mas cliques e entradas da raiz
+// aparecem separados no painel. Enquanto a home-* não existir no admin, cai
+// pra página original (legado) pra não perder o registro do clique.
 const grupos = [
   {
-    slug: "achadinhos-1",
+    slug: "home-achadinhos",
+    legado: "achadinhos-1",
+    trackingGroup: "home_achadinhos",
     titulo: "Grupo Achadinhos",
     descricao: "Achadinhos baratos e virais do Mercado Livre, Shopee e AliExpress.",
   },
   {
-    slug: "perfumes-1",
+    slug: "home-perfumes",
+    legado: "perfumes-1",
+    trackingGroup: "home_perfumes",
     titulo: "Grupo Perfumes",
     descricao: "Promoções de perfumes 100% originais do Mercado Livre.",
   },
@@ -49,10 +53,12 @@ export default async function Page({
 }>) {
   const { fbclid } = await searchParams;
   const resolvidos = await Promise.all(
-    grupos.map(async (grupo) => ({
-      ...grupo,
-      site: (await resolverSite(grupo.slug, sites[grupo.slug])) as SiteConfig,
-    })),
+    grupos.map(async (grupo) => {
+      const proprio = await resolverSite(grupo.slug);
+      if (proprio) return { ...grupo, site: proprio };
+      const site = (await resolverSite(grupo.legado, sites[grupo.legado])) as SiteConfig;
+      return { ...grupo, slug: grupo.legado, site };
+    }),
   );
 
   return (
@@ -69,7 +75,7 @@ export default async function Page({
 
         <div className="hero-inner">
           <div className="grupos">
-            {resolvidos.map(({ slug, titulo, descricao, site }) => (
+            {resolvidos.map(({ slug, trackingGroup, titulo, descricao, site }) => (
               <div className="grupo-card" key={slug} style={themeFor(site.accent)}>
                 <Image
                   src={site.logoSrc}
@@ -83,7 +89,7 @@ export default async function Page({
                 <p>{descricao}</p>
                 <WhatsappButton
                   href={site.whatsappLink}
-                  trackingGroup={site.trackingGroup}
+                  trackingGroup={trackingGroup}
                   slug={slug}
                   fbclid={fbclid ?? null}
                 >

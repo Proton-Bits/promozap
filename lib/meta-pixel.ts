@@ -2,7 +2,11 @@ export type PixelGroup =
   | "grupo_18_30"
   | "grupo_31_50"
   | "grupo_50_plus"
-  | "achadinhos";
+  | "achadinhos"
+  // Botões da página raiz (app/page.tsx) — separados das landing pages pra
+  // dar pra ver cada um no Events Manager.
+  | "home_achadinhos"
+  | "home_perfumes";
 
 declare global {
   interface Window {

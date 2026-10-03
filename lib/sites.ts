@@ -1,3 +1,5 @@
+import type { PixelGroup } from "@/lib/meta-pixel";
+
 // Configuração central das landing pages da família PromoZap.
 //
 // Cada página compartilha o mesmo layout (components/LandingPage.tsx) e só
@@ -25,7 +27,7 @@ export type SiteConfig = {
   accent: string;
   metaPixelId?: string;
   footerTagline: string;
-  trackingGroup?: "grupo_18_30" | "grupo_31_50" | "grupo_50_plus" | "achadinhos";
+  trackingGroup?: PixelGroup;
   bannerText?: string;
   liveStatsValues?: number[];
   recentJoiners?: number;

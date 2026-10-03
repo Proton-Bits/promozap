@@ -23,6 +23,10 @@ Cada página de perfumes tem seu próprio grupo de WhatsApp e sua segmentação 
 | **Perfumes 2** | `/perfumes-2` | 31-50 anos | `grupo_31_50` | [Entrar no grupo](https://chat.whatsapp.com/J5iJyofmKxaAvZmW7T9V4f?s=cl&p=i&mlu=4&ilr=4) |
 | **Perfumes 3** | `/perfumes-3` | 50+ anos | `grupo_50_plus` | [Entrar no grupo](https://chat.whatsapp.com/HwX9qAx1Gtr4tDBM1JfrXw?s=cl&p=i&mlu=4&ilr=4) |
 | **Achadinhos** | `/achadinhos-1` | Sem pixel | — | [Entrar no grupo](https://chat.whatsapp.com/K6hKMl1SKKeDXX1MgSUnvv?s=cl&p=i&mlu=4&ilr=4) |
+| **Raiz — botão Achadinhos** | `/` | Todas | `home_achadinhos` | Funil de `achadinhos-1` (landing page `home-achadinhos` no admin) |
+| **Raiz — botão Perfumes** | `/` | Todas | `home_perfumes` | Funil de `perfumes-1` (landing page `home-perfumes` no admin) |
+
+> Na raiz (`/`) o `PageView`/`ViewContent` vai sem `content_category` (a página tem os dois grupos); só `Contact`/`Lead` levam a categoria do botão clicado.
 
 > `/achadinhos-1` não possui pixel configurado. Ele tem seu próprio grupo do WhatsApp de forma independente.
 

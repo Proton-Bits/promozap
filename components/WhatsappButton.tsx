@@ -1,6 +1,6 @@
 "use client";
 
-import { trackContact, trackLead } from "@/lib/meta-pixel";
+import { trackContact, trackLead, type PixelGroup } from "@/lib/meta-pixel";
 
 declare global {
   interface Window {
@@ -25,7 +25,7 @@ export default function WhatsappButton({
 }: Readonly<{
   href: string;
   children: React.ReactNode;
-  trackingGroup?: "grupo_18_30" | "grupo_31_50" | "grupo_50_plus" | "achadinhos";
+  trackingGroup?: PixelGroup;
   /** Slug da landing page no promozap-admin — presente, registra o clique de verdade (ver app/api/clique/[slug]). */
   slug?: string;
   fbclid?: string | null;
