@@ -10,18 +10,15 @@ declare global {
   }
 }
 
-export function trackPageView(group: PixelGroup) {
+// Sem group (ex.: página raiz, que tem os dois grupos), vai sem content_category.
+export function trackPageView(group?: PixelGroup) {
   if (typeof window === "undefined") return;
-  window.fbq?.("track", "PageView", {
-    content_category: group,
-  });
+  window.fbq?.("track", "PageView", group ? { content_category: group } : undefined);
 }
 
-export function trackViewContent(group: PixelGroup) {
+export function trackViewContent(group?: PixelGroup) {
   if (typeof window === "undefined") return;
-  window.fbq?.("track", "ViewContent", {
-    content_category: group,
-  });
+  window.fbq?.("track", "ViewContent", group ? { content_category: group } : undefined);
 }
 
 export function trackContact(group: PixelGroup, eventId?: string) {

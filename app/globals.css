@@ -356,3 +356,61 @@ body {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.75); }
 }
+
+/* ===== ESCOLHA DE GRUPO (/grupos) ===== */
+.grupos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.grupo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.12) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+}
+
+.grupo-img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 10px 32px rgba(var(--accent-rgb), 0.25);
+  margin-bottom: 14px;
+}
+
+.grupo-card h2 {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.grupo-card p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.grupo-card .btn-whats {
+  width: 100%;
+  justify-content: center;
+  font-size: 15px;
+  padding: 14px 18px;
+}
+
+@media (max-width: 560px) {
+  .grupos {
+    grid-template-columns: 1fr;
+  }
+}

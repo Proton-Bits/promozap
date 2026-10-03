@@ -1,0 +1,24 @@
+name: Deploy
+
+# Dispara o deploy no Coolify a cada push na main (ou manualmente pela aba
+# Actions). O build roda no próprio Coolify — aqui só chama o webhook.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chamar webhook de deploy do Coolify
+        env:
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -H "Authorization: Bearer $COOLIFY_TOKEN" \
+            "https://coolify.marmoup.cloud/api/v1/deploy?uuid=qowiye0ge3mifwvrf60vawuv&force=false"

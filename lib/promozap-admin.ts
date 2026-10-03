@@ -61,11 +61,16 @@ export async function resolverSite(slug: string, fallback: SiteConfig | null = n
 }
 
 /** Registra o clique de verdade — chamado pelo proxy em app/api/clique/[slug]. */
-export async function registrarClique(slug: string, inviteLink: string, fbclid: string | null): Promise<boolean> {
+export async function registrarClique(
+  slug: string,
+  inviteLink: string,
+  fbclid: string | null,
+  eventId: string | null = null,
+): Promise<boolean> {
   const res = await fetch(`${baseUrl()}/api/public/landing-pages/${slug}/clique`, {
     method: "POST",
     headers: { ...headers(), "Content-Type": "application/json" },
-    body: JSON.stringify({ inviteLink, fbclid }),
+    body: JSON.stringify({ inviteLink, fbclid, eventId }),
   });
   return res.ok;
 }
